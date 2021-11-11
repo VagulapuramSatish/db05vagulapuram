@@ -26,3 +26,15 @@ exports.Icecream_delete = function(req, res) {
 exports.Icecream_update_put = function(req, res) {
  res.send('NOT IMPLEMENTED: Icecream update PUT' + req.params.id);
 };
+// VIEWS
+// Handle a show all view
+exports.Icecream_view_all_Page = async function(req, res) {
+    try{
+    theIcecream = await Icecream.find();
+    res.render('Icecream', { title: 'Icecream Search Results', results: theIcecream });
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+   };

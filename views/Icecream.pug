@@ -2,29 +2,13 @@ extends layout
 
 block content
   h1= title
+  
   p Search results Icecream  
-  p 
-  div(class="container-fluid")
+  p
+  - let items = results 
+    div(class="container-fluid")
         div(class="row")
-            -
-                let Icecream = [
-                    {
-                        "brand": "Masquati",
-                        "flavour": "Chocolate" ,
-                        "cost": 30
-                    },
-                    {
-                        "brand": "Magnum",
-                        "flavour": "Strawberry" ,
-                        "cost": 25
-                    },
-                    {
-                        "brand": "Quality",
-                        "flavour": "Coconut" ,
-                        "cost": 40
-                    },                   
-                ]
-            each v,index in Icecream 
+            each v,index in items
                 div(class="col-sm-2" onclick=`buy(${index})`) #{v.brand}
                 div(class="col-sm-2" onclick=`buy(${index})`) #{v.flavour}
                 div(class="col-sm-2" onclick=`buy(${index})`) #{v.cost}

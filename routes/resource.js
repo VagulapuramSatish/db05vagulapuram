@@ -12,8 +12,7 @@ router.post('/Icecream', Icecream_controller.Icecream_create_post);
 // DELETE request to delete Icecream.
 router.delete('/Icecream/:id', Icecream_controller.Icecream_delete);
 // PUT request to update Icecream.
-router.put('/Icecream/:id',
-Icecream_controller.Icecream_update_put);
+router.put('/Icecream/:id',Icecream_controller.Icecream_update_put);
 // GET request for one Icecream.
 router.get('/Icecream/:id', Icecream_controller.Icecream_detail);
 // GET request for list of all Icecream items.
