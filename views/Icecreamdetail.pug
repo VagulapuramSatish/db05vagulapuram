@@ -1,20 +1,24 @@
-extends layout
-block content
- h1= title
- - let Icecreamid = toShow._id
- - let brand = toShow.brand
- - let flavour = toShow.flavour
- - let cost = toShow.cost
- div
- div.row
- div(class='IcecreamAttr mr-3') Icecream ID is:
- div #{Icecreamid}
- div.row
- div(class='IcecreamAttr mr-3') Icecream Brand is:
- div #{brand}
- div.row
- div(class='IcecreamAttr mr-3') Icecream Flavour is:
- div #{flavour}
- div.row
- div(class='IcecreamAttr mr-3') Icecream Cost is:
- div #{cost}
+extends layout 
+ 
+block content 
+  h1= title 
+  if (toShow == null) 
+    h2 No instance to show 
+  else 
+    - let Icecreamid = toShow._id 
+    - let brand = toShow.brand 
+    - let flavour = toShow.flavour 
+    - let cost = toShow.cost 
+    div 
+      div.row 
+        div(class='IcecreamAttr mr-3') Icecream ID is: 
+        div #{Icecreamid} 
+      div.row 
+        div(class='IcecreamAttr mr-3') Icecream brand is: 
+        div #{brand} 
+      div.row 
+        div(class='IcecreamAttr mr-3') Icecream cost is: 
+        div #{cost} 
+      div.row 
+        div(class='IcecreamAttr mr-3') Icecream flavour is: 
+        div #{flavour}
