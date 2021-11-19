@@ -6,12 +6,17 @@ block content
   p Search results Icecream  
   p
   - let items = results 
-    div(class="container-fluid")
-        div(class="row")
-            each v,index in items
-                div(class="col-sm-2" onclick=`buy(${index})`) #{v.brand}
-                div(class="col-sm-2" onclick=`buy(${index})`) #{v.flavour}
-                div(class="col-sm-2" onclick=`buy(${index})`) #{v.cost}
+    div(class="container-fluid") 
+    div(class="row m-1") 
+      each item in items  
+        - let destination = `dispatch(\"/Icecream/update?id=${item._id}\")` 
+        div(class="row-sm-2", class="m-1") Item #{item.brand}(#{item.flavour}) is #{item.cost} 
+          button.btn( class="btn-primary ml-1", onclick= destination) Update 
+   
+  script. 
+    function dispatch(path){ 
+      window.location.href=path 
+    }
 
   script.                
         function buy(intemNo)
