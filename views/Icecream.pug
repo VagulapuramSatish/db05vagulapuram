@@ -10,8 +10,18 @@ block content
     div(class="row m-1") 
       each item in items  
         - let destination = `dispatch(\"/Icecream/update?id=${item._id}\")` 
+         - let details = `dispatch(\"/Icecream/detail?id=${item._id}\")` 
+
         div(class="row-sm-2", class="m-1") Item #{item.brand}(#{item.flavour}) is #{item.cost} 
-          button.btn( class="btn-primary ml-1", onclick= destination) Update 
+          
+        <br><br>
+          
+            span(class="btn btn-info", onclick= details) Details
+            <br>
+            a(class="btn btn-danger", href="/Icecream/delete/?id="+item._id) Delete
+            <br>
+
+            button.btn( class="btn-success ml-1", onclick= destination) Update        
    
   script. 
     function dispatch(path){ 
