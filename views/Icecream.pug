@@ -34,36 +34,67 @@
 //-               alert(`you purchased Item ${intemNo+1}`)
 //-         }
 
+//- extends layout
+
+//- block content
+//-   h1= title
+  
+//-   p Search Results Icecream 
+//-   p 
+//-   - let items = results
+//-     div(class="container-fluid")
+//-     div(class="row m-1")
+//-       each item in items
+//-         - let destination = `dispatch(\"/Icecream/update?id=${item._id}\")`
+//-         - let details = `dispatch(\"/Icecream/detail?id=${item._id}\")` 
+//-         div(class="row-sm-2", class="m-1") Item #{item.brand}(#{item.flavour}) is #{item.cost}
+//-         <br><br>
+//-             span(class="btn btn-info", onclick= details) Details
+//-             <br>
+//-             a(class="btn btn-danger", href="/Icecream/Delete/?id="+item._id) Delete
+//-             <br>
+//-             button.btn( class="btn-primary ml-1", onclick= destination) Update
+//-             <br>
+//-             a(class="btn btn-success", href="/Icecream/create") Create
+
+//-   script.
+//-       function dispatch(path)
+//-       {
+//-         window.location.href=path
+//-       }
+
+//-   script.                
+//-         function buy(intemNo)
+//-         {
+//-            alert(`you purchased Item ${intemNo+1}`)
+//-         }
 extends layout
 
 block content
   h1= title
   
   p Search Results Icecream 
-  p 
-  - let items = results
+            
     div(class="container-fluid")
-    div(class="row m-1")
-      each item in items
-        - let destination = `dispatch(\"/Icecream/update?id=${item._id}\")`
-        - let details = `dispatch(\"/Icecream/detail?id=${item._id}\")` 
-        div(class="row-sm-2", class="m-1") Item #{item.brand}(#{item.flavour}) is #{item.cost}
-        <br><br>
-            span(class="btn btn-info", onclick= details) Details
-            <br>
-            a(class="btn btn-danger", href="/Icecream/Delete/?id="+item._id) Delete
-            <br>
-            button.btn( class="btn-primary ml-1", onclick= destination) Update
-            <br>
-            a(class="btn btn-success", href="/Icecream/create") Create
-
-  script.
+        div(class="row")
+            - let destination1 = `dispatch(\"/Icecream/create\")`
+            button.btn(class="btn-success ms-1", style="width: 150px" onclick= destination1) Create            
+            - let Icecream = results
+            each v, index in Icecream 
+                - let destination = `dispatch(\"/Icecream/update?id=${v._id}\")`
+                - let destination2 = `dispatch(\"/Icecream/delete?id=${v._id}\")`
+                - let destination3 = `dispatch(\"/Icecream/detail?id=${v._id}\")`
+                div(class="row-sm-2", class="m-1") Item #{v.brand} #{v.flavour} #{v.cost}
+                    button.btn(class="btn-primary ms-1", onclick= destination) Update
+                    button.btn(class="btn-info ms-1", onclick= destination3) Detail
+                    button.btn(class="btn-danger ms-1", onclick= destination2) Delete
+    script.
       function dispatch(path)
       {
         window.location.href=path
       }
 
-  script.                
+    script.                
         function buy(intemNo)
         {
            alert(`you purchased Item ${intemNo+1}`)
